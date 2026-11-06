@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'sco3'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spark Core и SQL (DataFrame API)
+    //implementation 'org.apache.spark:spark-core_2.13:3.5.1'
+    //implementation 'org.apache.spark:spark-sql_2.13:3.5.1'
+    implementation 'org.apache.spark:spark-core_2.13:4.0.0'
+    implementation 'org.apache.spark:spark-sql_2.13:4.0.0'
+    // logging
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+// resolve spark conflicts
+configurations.all {
+    exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    exclude group: 'log4j', module: 'log4j'
+}
+
+application {
+    mainClass = 'sco3.Creator'
+}
+
+// run memory
+tasks.named('run') {
+    jvmArgs = ['-Xmx2g']
+}
+
+//tasks.named('run') {
+//    environment 'SPARK_USER', 'spark'
+//}

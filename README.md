@@ -75,6 +75,41 @@ sys	0m0.021s
 
 
 
+Java version:
+```
+JAVA_HOME=<java 21 home dir> gradle run
+
+```
+
+Output:
+```
+...
+Finished processing stats for write job 89d06d16-b693-4694-8f79-ec8443421cc4.
+[main] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator - Code generated in 6.881178 ms
+[main] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator - Code generated in 6.97379 ms
++---+-----+---+
+| id| name|age|
++---+-----+---+
+|  1|Alice| 30|
+|  2|  Bob| 25|
+|  3| Cara| 35|
++---+-----+---+
+
+[main] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator - Code generated in 3.28008 ms
+[main] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator - Code generated in 5.041892 ms
+[main] INFO org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator - Code generated in 5.594982 ms
++-----+
+| name|
++-----+
+|Alice|
+| Cara|
++-----+
+
+[main] INFO org.apache.spark.SparkContext - SparkContext is stopping with exitCode 0 from stop at Creator.java:46.
+...
+
+```
+
 
 
 
@@ -96,3 +131,6 @@ data/users.parquet/.part-00003-82878583-1948-4873-ac2f-5a7207029948-c000.gz.parq
 data/users.parquet/_SUCCESS
 data/users.parquet/._SUCCESS.crc
 ```
+
+
+

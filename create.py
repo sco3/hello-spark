@@ -20,7 +20,9 @@ def main():
         ],
         ["id", "name", "age"],
     )
-    df.write.mode("overwrite").option("compression","gzip").parquet("data/users.parquet")
+    df.write.mode("overwrite").option("compression", "gzip").partitionBy("age").parquet(
+        "data/users.parquet"
+    )
 
     df.show()
     df.filter(df.age > 28).select("name").show()
