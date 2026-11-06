@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'eclipse'
 }
 
 group = 'sco3'
@@ -40,6 +41,13 @@ tasks.named('run') {
     jvmArgs = ['-Xmx2g']
 }
 
-//tasks.named('run') {
-//    environment 'SPARK_USER', 'spark'
-//}
+tasks.register('run-bean', JavaExec) {
+    group = 'application'
+    description = 'Run sco3.BeanCreator'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'sco3.BeanCreator'
+    jvmArgs = ['-Xmx2g']
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
