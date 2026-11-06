@@ -9,7 +9,7 @@ Create and query data frame
 
 
 ```
-uv run create.py
+time uv run create.py
 ```
 
 Output
@@ -28,7 +28,57 @@ Output
 |Alice|
 | Cara|
 +-----+
+
+real	0m10.232s
+user	0m0.175s
+sys	0m0.037s
+
 ```
+
+And sparkless (rust based alternative):
+
+
+```
+time uv run create-sparkless.py 
+```
+
+Output:
+
+```
+
+Hello from hello-spark!
+shape: (3, 3)
+┌─────┬───────┬─────┐
+│ id  ┆ name  ┆ age │
+│ --- ┆ ---   ┆ --- │
+│ i64 ┆ str   ┆ i64 │
+╞═════╪═══════╪═════╡
+│ 1   ┆ Alice ┆ 30  │
+│ 2   ┆ Bob   ┆ 25  │
+│ 3   ┆ Cara  ┆ 35  │
+└─────┴───────┴─────┘
+shape: (2, 1)
+┌───────┐
+│ name  │
+│ ---   │
+│ str   │
+╞═══════╡
+│ Alice │
+│ Cara  │
+└───────┘
+
+real	0m0.046s
+user	0m0.026s
+sys	0m0.021s
+
+```
+
+
+
+
+
+
+
 
 Data files:
 ```
